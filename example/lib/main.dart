@@ -170,66 +170,69 @@ class MaterialDesignGridExample extends StatelessWidget {
     // You can also pass a custom theme to change spacings and even custom breakpoints.
     // The breakpoints control how many columns there are, the outer padding and the (optional) maximum body width.
     return MaterialDesignGridTheme(
-      child: MaterialDesignGrid(
-        children: [
-          // This is a Material Design Grid Row, contrary to Flutter's Row widget, this one wraps children when necessary.
-          // Keep your rows as small as possible. To enforce a visual line break, prefer using a new Material Design Grid Row.
-          // For some rare occasions, there is the MaterialDesignGridBreak widget which enforces a visual line break within a row.
-          MaterialDesignGridRow(
-            children: [
-              // Material Design Grid Items are given a fixed column span, which must not be greater then the smallest amount of columns defined in the breakpoints. (By default, this is 4 columns)
-              MaterialDesignGridItem(
-                columns: 4,
-                child: Card(
-                  child: Column(
-                    children: const [
-                      ListTile(
-                        title: Text('Material Design Grid'),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Text(
-                            'This is a Material Design Grid example. The Material Design Grid uses a varying number of columns depending on the screen size. Its children are given a fixed number of columns.'),
-                      ),
-                    ],
+      // The MaterialDesignGridDebugOverlay is a useful widget to visually debug your grid implementation.
+      child: MaterialDesignGridDebugOverlay(
+        child: MaterialDesignGrid(
+          children: [
+            // This is a Material Design Grid Row, contrary to Flutter's Row widget, this one wraps children when necessary.
+            // Keep your rows as small as possible. To enforce a visual line break, prefer using a new Material Design Grid Row.
+            // For some rare occasions, there is the MaterialDesignGridBreak widget which enforces a visual line break within a row.
+            MaterialDesignGridRow(
+              children: [
+                // Material Design Grid Items are given a fixed column span, which must not be greater then the smallest amount of columns defined in the breakpoints. (By default, this is 4 columns)
+                MaterialDesignGridItem(
+                  columns: 4,
+                  child: Card(
+                    child: Column(
+                      children: const [
+                        ListTile(
+                          title: Text('Material Design Grid'),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text(
+                              'This is a Material Design Grid example. The Material Design Grid uses a varying number of columns depending on the screen size. Its children are given a fixed number of columns.'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          MaterialDesignGridRow(
-            children: [
-              MaterialDesignGridItem(
-                columns: 2,
-                child: Container(
-                  height: 50,
-                  color: Theme.of(context).colorScheme.primary,
+              ],
+            ),
+            MaterialDesignGridRow(
+              children: [
+                MaterialDesignGridItem(
+                  columns: 2,
+                  child: Container(
+                    height: 50,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
-              ),
-              MaterialDesignGridItem(
-                columns: 2,
-                child: Container(
-                  height: 50,
-                  color: Theme.of(context).colorScheme.primary,
+                MaterialDesignGridItem(
+                  columns: 2,
+                  child: Container(
+                    height: 50,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
-              ),
-              MaterialDesignGridItem(
-                columns: 2,
-                child: Container(
-                  height: 50,
-                  color: Theme.of(context).colorScheme.primary,
+                MaterialDesignGridItem(
+                  columns: 2,
+                  child: Container(
+                    height: 50,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
-              ),
-              MaterialDesignGridItem(
-                columns: 2,
-                child: Container(
-                  height: 50,
-                  color: Theme.of(context).colorScheme.primary,
+                MaterialDesignGridItem(
+                  columns: 2,
+                  child: Container(
+                    height: 50,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
