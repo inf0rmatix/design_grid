@@ -11,8 +11,9 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+The classic use-case of implementing a colum-based design. Use the classic ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints. 
+
+Need to implement a design based on the strict rules of Material Layout? Use the MaterialDesignGrid to get an exact implementation of the [Material Design Layout guide](https://m2.material.io/design/layout/responsive-layout-grid.html)
 
 ## Features
 
