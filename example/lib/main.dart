@@ -79,9 +79,9 @@ class ResponsiveDesignGridExample extends StatelessWidget {
                 ResponsiveDesignGridItem(
                   columns: const ResponsiveDesignGridColumns(
                     small: 12,
-                    medium: 10,
-                    large: 8,
-                    extraLarge: 6,
+                    medium: 8,
+                    large: 6,
+                    extraLarge: 4,
                   ),
                   // The child widget will be wrapped in a SizedBox widget with constrained width according to the columns property.
                   child: Card(
@@ -201,6 +201,20 @@ class MaterialDesignGridExample extends StatelessWidget {
             ),
             MaterialDesignGridRow(
               children: [
+                MaterialDesignGridItem(
+                  columns: 2,
+                  child: Container(
+                    height: 50,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+                MaterialDesignGridItem(
+                  columns: 2,
+                  child: Container(
+                    height: 50,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
                 MaterialDesignGridItem(
                   columns: 2,
                   child: Container(
