@@ -153,6 +153,50 @@ class ResponsiveDesignGridExample extends StatelessWidget {
                 ),
               ],
             ),
+            // Nesting the Responsive Design Grid is indefinitely possible.
+            ResponsiveDesignGridRow(
+              children: [
+                ResponsiveDesignGridItem(
+                  columns: const ResponsiveDesignGridColumns(
+                    small: 12,
+                    medium: 10,
+                    large: 8,
+                    extraLarge: 6,
+                  ),
+                  child: ResponsiveDesignGridDebugOverlay(
+                    useOuterPadding: false,
+                    child: ResponsiveDesignGrid(
+                      children: [
+                        ResponsiveDesignGridRow(
+                          children: [
+                            ResponsiveDesignGridItem(
+                              columns: const ResponsiveDesignGridColumns(
+                                small: 6,
+                                medium: 4,
+                              ),
+                              child: Container(
+                                height: 50,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                            ResponsiveDesignGridItem(
+                              columns: const ResponsiveDesignGridColumns(
+                                small: 6,
+                                medium: 4,
+                              ),
+                              child: Container(
+                                height: 50,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

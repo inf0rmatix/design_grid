@@ -11,30 +11,116 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-The classic use-case of implementing a colum-based design. Use the classic ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints. 
+The classic use-case of implementing a colum-based design. Use the classic ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints.
 
 Need to implement a design based on the strict rules of Material Layout? Use the MaterialDesignGrid to get an exact implementation of the [Material Design Layout guide](https://m2.material.io/design/layout/responsive-layout-grid.html)
 
-## Features
+## 🔗 Table of Contents
+- [🔗 Table of Contents](#-table-of-contents)
+- [✨ Features](#-features)
+  - [Responsive Design Grid](#responsive-design-grid)
+  - [Material Design Grid](#material-design-grid)
+- [🎉 Getting started](#-getting-started)
+- [🏗️ Usage](#️-usage)
+  - [Responsive Design Grid](#responsive-design-grid-1)
+  - [Material Design Grid](#material-design-grid-1)
+- [📚 Additional information](#-additional-information)
+  - [Implementing a custom design grid approach](#implementing-a-custom-design-grid-approach)
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
 
-## Getting started
+## ✨ Features
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+### Responsive Design Grid
 
-## Usage
+Implement a column-based design with different column-spans for every breakpoint.
+Responsive design grid widgets can be indefinitely nested.
+Create small and clean widgets that use ResponsiveDesignGrid for layout.
+They will fit, no matter how deeply nested you use them.
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+You can customize:
+
+- Breakpoints
+- Column-spacing
+- Row-spacing
+- Grid-padding
+- Amount of columns
+
+TODO picture/gif
+
+### Material Design Grid
+
+Implement a design based on the Material Design guidelines.
+Material Design Grid is not meant to be used nested.
+
+You can customize:
+
+- Breakpoints
+- Column-spacing
+- Row-spacing
+- Grid-padding
+- Amount of columns per breakpoint
+
+TODO picture/gif
+
+## 🎉 Getting started
+
+Decide whether you need to use the `ResponsiveDesignGrid` or the `MaterialDesignGrid`.
+Talk with your designer to build a common understanding.
+
+## 🏗️ Usage
+
+### Responsive Design Grid
 
 ```dart
-const like = 'sample';
+@override
+Widget build(BuildContext context){
+    return ResponsiveDesignGridConfig(
+        child: ResponsiveDesignGrid(
+            children: [
+                ResponsiveDesignGridRow(
+                    children: [
+                        ResponsiveDesignGridItem(
+                            columns: ResponsiveDesignGridColumns(
+                                small: 12,
+                                medium: 10,
+                                large: 8,
+                                extraLarge: 6,
+                            ),
+                            child: Placeholder(),
+                        ),
+                    ],
+                )
+            ],
+        ),
+    );
+}
 ```
 
-## Additional information
+### Material Design Grid
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+@override
+Widget build(BuildContext context) {
+    return MaterialDesignGridTheme(
+        child: MaterialDesignGrid(
+            children: [
+                MaterialDesignGridRow(
+                    children: [
+                        MaterialDesignGridItem(
+                            columns: 4,
+                            child: Placeholder(),
+                        ),
+                    ],
+                )
+            ],
+        ),
+    );
+}
+```
+
+## 📚 Additional information
+
+### Implementing a custom design grid approach
+
+The base widgets used for both the `ResponsiveDesignGrid` as well as the `MaterialDesignGrid` can be found in `lib/src/widgets`.
+You can extend those to create your super-fancy very own custom design grid implementation 🥳.
