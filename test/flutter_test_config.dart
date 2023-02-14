@@ -7,8 +7,8 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
 
   return AlchemistConfig.runWithConfig(
     config: const AlchemistConfig(
-      ciGoldensConfig: isRunningOnCi ? CiGoldensConfig() : null,
-      platformGoldensConfig: isRunningOnCi ? null : PlatformGoldensConfig(),
+      ciGoldensConfig: CiGoldensConfig(enabled: isRunningOnCi),
+      platformGoldensConfig: PlatformGoldensConfig(enabled: !isRunningOnCi),
     ),
     run: testMain,
   );
