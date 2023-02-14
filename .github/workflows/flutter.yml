@@ -61,3 +61,6 @@ jobs:
       # want to change this to 'flutter test'.
       - name: Run tests
         run: flutter test --dart-define=CI=true
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
