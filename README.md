@@ -10,9 +10,11 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
-<a href="https://github.com/inf0rmatix]/design_grid/actions"><img src="https://github.com/inf0rmatix/design_grid/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://github.com/inf0rmatix]/design_grid/actions"><img src="https://github.com/inf0rmatix/design_grid/workflows/tests/badge.svg" alt="Build Status"></a> 
+<a href="https://codecov.io/gh/inf0rmatix/design_grid" > 
+ <img src="https://codecov.io/gh/inf0rmatix/design_grid/branch/master/graph/badge.svg?token=7OWGIYJD5Y"/> 
+</a>
 
-TODO add code coverage report
 TODO increase code coverage
 
 The classic use-case of implementing a colum-based design. Use the classic ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints.
