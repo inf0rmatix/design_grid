@@ -12,6 +12,9 @@ and the Flutter guide for
 -->
 <a href="https://github.com/inf0rmatix]/design_grid/actions"><img src="https://github.com/inf0rmatix/design_grid/workflows/tests/badge.svg" alt="Build Status"></a>
 
+TODO add code coverage report
+TODO increase code coverage
+
 The classic use-case of implementing a colum-based design. Use the classic ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints.
 
 Need to implement a design based on the strict rules of Material Layout? Use the MaterialDesignGrid to get an exact implementation of the [Material Design Layout guide](https://m2.material.io/design/layout/responsive-layout-grid.html)
