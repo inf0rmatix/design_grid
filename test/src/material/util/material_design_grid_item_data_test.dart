@@ -8,7 +8,7 @@ void main() {
       const data = MaterialDesignGridItemData(width: 1, child: Placeholder());
       const oldData = MaterialDesignGridItemData(width: 2, child: Placeholder());
 
-      expect(data.updateShouldNotify(oldData), true);
+      expect(data.updateShouldNotify(oldData), isTrue);
     });
   });
 }

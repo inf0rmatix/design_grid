@@ -15,7 +15,7 @@ void main() {
         child: Placeholder(),
       );
 
-      expect(theme.updateShouldNotify(oldTheme), true);
+      expect(theme.updateShouldNotify(oldTheme), isTrue);
     });
   });
 }

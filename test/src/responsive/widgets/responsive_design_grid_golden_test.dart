@@ -3,6 +3,8 @@ import 'package:design_grid/design_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'golden_helper.dart';
+
 void main() {
   group('Responsive Design Grid', () {
     const testDesignGridThemeData = ResponsiveDesignGridThemeData(
@@ -11,15 +13,6 @@ void main() {
       rowSpacing: 16.0,
       columns: 12,
     );
-
-    const breakpoints = ResponsiveDesignGridBreakpoints();
-
-    final breakpointScenarios = <ResponsiveDesignGridDisplaySize, double>{
-      ResponsiveDesignGridDisplaySize.small: breakpoints.small,
-      ResponsiveDesignGridDisplaySize.medium: breakpoints.medium,
-      ResponsiveDesignGridDisplaySize.large: breakpoints.large,
-      ResponsiveDesignGridDisplaySize.extraLarge: breakpoints.extraLarge,
-    };
 
     goldenTest(
       'should do a basic column layout for all sizes',
@@ -30,11 +23,9 @@ void main() {
           theme: testDesignGridThemeData,
           child: Wrap(
             children: [
-              for (final scenario in breakpointScenarios.entries)
-                GoldenTestScenario(
-                  name: scenario.key.name,
-                  child: _ResponsiveDesignGridForTest(width: scenario.value),
-                ),
+              ...responsiveBreakpointScenarios(
+                child: const _ResponsiveDesignGridForTest(),
+              ),
             ],
           ),
         );
@@ -219,9 +210,12 @@ void main() {
       fileName: 'responsive_design_grid_1540px',
       builder: () => GoldenTestScenario(
         name: 'edge case width of 1540px',
-        child: const ResponsiveDesignGridConfig(
+        child: ResponsiveDesignGridConfig(
           theme: testDesignGridThemeData,
-          child: _ResponsiveDesignGridForTest(width: 1540),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1540),
+            child: const _ResponsiveDesignGridForTest(),
+          ),
         ),
       ),
     );
@@ -229,37 +223,27 @@ void main() {
 }
 
 class _ResponsiveDesignGridForTest extends StatelessWidget {
-  final double width;
-
-  const _ResponsiveDesignGridForTest({
-    required this.width,
-  });
+  const _ResponsiveDesignGridForTest();
 
   @override
   Widget build(BuildContext context) {
     const columnSizeExamples = [12, 6, 4, 3, 2, 1];
 
-    return MediaQuery(
-      data: MediaQueryData(size: Size(width, 1080)),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: width),
-        child: ResponsiveDesignGrid(
-          children: [
-            for (final columns in columnSizeExamples)
-              ResponsiveDesignGridRow(
-                children: [
-                  ...List.generate(
-                    12 ~/ columns,
-                    (_) => ResponsiveDesignGridItem(
-                      columns: ResponsiveDesignGridColumns(small: columns),
-                      child: _GridChildLabel(),
-                    ),
-                  ),
-                ],
+    return ResponsiveDesignGrid(
+      children: [
+        for (final columns in columnSizeExamples)
+          ResponsiveDesignGridRow(
+            children: [
+              ...List.generate(
+                12 ~/ columns,
+                (_) => ResponsiveDesignGridItem(
+                  columns: ResponsiveDesignGridColumns(small: columns),
+                  child: _GridChildLabel(),
+                ),
               ),
-          ],
-        ),
-      ),
+            ],
+          ),
+      ],
     );
   }
 }
