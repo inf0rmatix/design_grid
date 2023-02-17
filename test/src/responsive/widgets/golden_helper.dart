@@ -16,6 +16,7 @@ List<GoldenTestScenario> responsiveBreakpointScenarios({required Widget child}) 
     for (final entry in breakpointScenarios.entries)
       GoldenTestScenario(
         name: entry.key.toString(),
+        constraints: BoxConstraints(maxWidth: entry.value),
         child: MediaQuery(
           data: MediaQueryData(size: Size(entry.value, double.maxFinite)),
           child: ConstrainedBox(

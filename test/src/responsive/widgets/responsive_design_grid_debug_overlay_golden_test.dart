@@ -13,11 +13,14 @@ void main() {
       builder: () => Column(
         children: [
           ...responsiveBreakpointScenarios(
-            child: ResponsiveDesignGridConfig(
-              child: ResponsiveDesignGridDebugOverlay(
-                isVisible: true,
-                child: Container(
-                  height: 100,
+            child: DecoratedBox(
+              decoration: BoxDecoration(border: Border.all()),
+              child: ResponsiveDesignGridConfig(
+                child: ResponsiveDesignGridDebugOverlay(
+                  isVisible: true,
+                  child: Container(
+                    height: 100,
+                  ),
                 ),
               ),
             ),
