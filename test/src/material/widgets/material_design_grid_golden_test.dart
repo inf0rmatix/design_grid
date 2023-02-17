@@ -247,7 +247,7 @@ class _MaterialDesignGridForHalfEmptyRowTest extends StatelessWidget {
 }
 
 class _MaterialDesignGridForGeneralTest extends StatelessWidget {
-  final hasFullWindowWidth;
+  final bool hasFullWindowWidth;
 
   const _MaterialDesignGridForGeneralTest({this.hasFullWindowWidth = false});
 

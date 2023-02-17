@@ -10,6 +10,8 @@ void main() {
     goldenTest(
       'should layout properly for all breakpoints',
       fileName: 'responsive_design_grid_debug_overlay',
+      // TODO(inf0rmatix): currently disabled on CI since there is a bug which throws an error with 0.00% pixel difference
+      skip: const String.fromEnvironment('CI') == 'true',
       builder: () => Column(
         children: [
           ...responsiveBreakpointScenarios(
