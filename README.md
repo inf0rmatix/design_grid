@@ -15,7 +15,7 @@ and the Flutter guide for
  <img src="https://codecov.io/gh/inf0rmatix/design_grid/branch/master/graph/badge.svg?token=7OWGIYJD5Y"/> 
 </a>
 
-TODO increase code coverage
+TODO finalize Readme
 
 The classic use-case of implementing a colum-based design. Use the classic ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints.
 
