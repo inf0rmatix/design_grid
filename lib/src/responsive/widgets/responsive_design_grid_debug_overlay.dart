@@ -32,7 +32,6 @@ class ResponsiveDesignGridDebugOverlay extends DesignGridDebugOverlay {
             (_) => ResponsiveDesignGridItem(
               columns: const ResponsiveDesignGridColumns(small: 1),
               child: Container(
-                width: double.infinity,
                 height: size.height,
                 color: transparentColor,
               ),
