@@ -44,6 +44,57 @@ void main() {
       );
 
       goldenTest(
+        'should use MediaQuery instead of LayoutBuilder of hasFullWindowWidth=true',
+        fileName: 'material_design_grid_media_query',
+        builder: () => MaterialDesignGridTheme(
+          child: Column(
+            children: [
+              GoldenTestScenario(
+                name: 'extra small (phone)',
+                constraints: const BoxConstraints(maxWidth: 599),
+                child: const MediaQuery(
+                  data: MediaQueryData(size: Size(599, 800)),
+                  child: _MaterialDesignGridForGeneralTest(hasFullWindowWidth: true),
+                ),
+              ),
+              GoldenTestScenario(
+                name: 'small (tablet)',
+                constraints: const BoxConstraints(maxWidth: 904),
+                child: const MediaQuery(
+                  data: MediaQueryData(size: Size(904, 800)),
+                  child: _MaterialDesignGridForGeneralTest(hasFullWindowWidth: true),
+                ),
+              ),
+              GoldenTestScenario(
+                name: 'small (tablet)',
+                constraints: const BoxConstraints(maxWidth: 1239),
+                child: const MediaQuery(
+                  data: MediaQueryData(size: Size(1239, 800)),
+                  child: _MaterialDesignGridForGeneralTest(hasFullWindowWidth: true),
+                ),
+              ),
+              GoldenTestScenario(
+                name: 'medium (laptop)',
+                constraints: const BoxConstraints(maxWidth: 1439),
+                child: const MediaQuery(
+                  data: MediaQueryData(size: Size(1439, 800)),
+                  child: _MaterialDesignGridForGeneralTest(hasFullWindowWidth: true),
+                ),
+              ),
+              GoldenTestScenario(
+                name: 'large (desktop)',
+                constraints: const BoxConstraints(maxWidth: 1600),
+                child: const MediaQuery(
+                  data: MediaQueryData(size: Size(1600, 800)),
+                  child: _MaterialDesignGridForGeneralTest(hasFullWindowWidth: true),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+
+      goldenTest(
         'should layout correctly for half-empty rows',
         fileName: 'material_design_grid_half_empty_rows',
         builder: () => MaterialDesignGridTheme(
@@ -196,14 +247,17 @@ class _MaterialDesignGridForHalfEmptyRowTest extends StatelessWidget {
 }
 
 class _MaterialDesignGridForGeneralTest extends StatelessWidget {
-  const _MaterialDesignGridForGeneralTest();
+  final hasFullWindowWidth;
+
+  const _MaterialDesignGridForGeneralTest({this.hasFullWindowWidth = false});
 
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(border: Border.all()),
-      child: const MaterialDesignGrid(
-        children: [
+      child: MaterialDesignGrid(
+        hasFullWindowWidth: hasFullWindowWidth,
+        children: const [
           MaterialDesignGridRow(
             children: [
               MaterialDesignGridItem(
