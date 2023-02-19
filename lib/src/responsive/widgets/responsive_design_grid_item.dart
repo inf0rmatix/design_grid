@@ -12,6 +12,17 @@ class ResponsiveDesignGridItem extends ResponsiveDesignGridItemWidget {
     required this.child,
   });
 
+  factory ResponsiveDesignGridItem.placeholder({
+    Key? key,
+    required ResponsiveDesignGridColumns columns,
+  }) {
+    return ResponsiveDesignGridItem(
+      key: key,
+      columns: columns,
+      child: const SizedBox(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final childData = ResponsiveDesignGridItemData.of(context);
