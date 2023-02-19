@@ -13,9 +13,11 @@ class MaterialDesignGridItem extends MaterialDesignGridItemWidget {
   }) : assert(columns > 0 && columns <= 4, 'columns must be between 1 and 4');
 
   factory MaterialDesignGridItem.placeholder({
+    Key? key,
     required int columns,
   }) {
     return MaterialDesignGridItem(
+      key: key,
       columns: columns,
       child: const SizedBox(),
     );
