@@ -1,4 +1,5 @@
 import 'package:design_grid/design_grid.dart';
+import 'package:design_grid/src/responsive/widgets/responsive_design_grid_builder.dart';
 import 'package:flutter/widgets.dart';
 
 // TODO add listview.builder design grid variant
@@ -109,6 +110,8 @@ class ResponsiveDesignGrid extends StatelessWidget {
 
   const ResponsiveDesignGrid({
     super.key,
+    // TODO does not work, not required any more
+    // TODO enable inherited row alignment
     this.alignment = DesignGridAlignment.start,
     this.useOuterPadding,
     this.shouldCalculateLayout,
@@ -131,7 +134,7 @@ class ResponsiveDesignGrid extends StatelessWidget {
         builder: (context, constraints) {
           final width = constraints.biggest.width;
 
-          return _DesignGridBuilder(
+          return ResponsiveDesignGridBuilder(
             alignment: alignment,
             useOuterPadding: useOuterPadding,
             width: width,
@@ -146,60 +149,12 @@ class ResponsiveDesignGrid extends StatelessWidget {
 
       final width = parentGridItemData.width;
 
-      return _DesignGridBuilder(
+      return ResponsiveDesignGridBuilder(
         alignment: alignment,
         useOuterPadding: useOuterPadding,
         width: width,
         children: children,
       );
     }
-  }
-}
-
-class _DesignGridBuilder extends StatelessWidget {
-  final DesignGridAlignment alignment;
-
-  final bool useOuterPadding;
-
-  final double width;
-
-  final List<ResponsiveDesignGridRow> children;
-
-  const _DesignGridBuilder({
-    required this.alignment,
-    required this.useOuterPadding,
-    required this.width,
-    required this.children,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = ResponsiveDesignGridTheme.maybeOf(context) ?? const ResponsiveDesignGridThemeData();
-
-    final availableWidth = useOuterPadding ? width - theme.gridPadding * 2 : width;
-
-    final columnSizes = DesignGridCalculator.calculateColumnSizes(availableWidth, theme.columns, theme.columnSpacing);
-
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: useOuterPadding ? theme.gridPadding : 0),
-      child: DesignGridColumnSizes(
-        sizes: columnSizes,
-        child: SizedBox(
-          width: availableWidth,
-          child: Column(
-            crossAxisAlignment: alignment.toCrossAxisAlignment(),
-            children: children
-                .expand((child) => [
-                      child,
-                      if (children.last != child)
-                        SizedBox(
-                          height: theme.rowSpacing,
-                        ),
-                    ])
-                .toList(),
-          ),
-        ),
-      ),
-    );
   }
 }
