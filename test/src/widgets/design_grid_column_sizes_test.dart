@@ -17,5 +17,22 @@ void main() {
 
       expect(oldWidget.updateShouldNotify(newWidget), isTrue);
     });
+
+    testWidgets('should throw if of context finds no widget', (widgetTester) async {
+      final key = GlobalKey();
+
+      await widgetTester.pumpWidget(
+        StatefulBuilder(
+          key: key,
+          builder: (context, setState) {
+            return Container();
+          },
+        ),
+      );
+
+      await widgetTester.pumpAndSettle();
+
+      expect(() => DesignGridColumnSizes.of(key.currentState!.context), throwsException);
+    });
   });
 }

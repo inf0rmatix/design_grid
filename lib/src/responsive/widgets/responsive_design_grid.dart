@@ -144,7 +144,8 @@ class ResponsiveDesignGrid extends StatelessWidget {
       );
     } else {
       if (parentGridItemData == null) {
-        throw Exception('Should calculate layout is set to false, but this widget is not a child of a DesignGrid.');
+        throw Exception(
+            'Should calculate layout is set to false, but this widget is not a child of a ResponsiveDesignGridItem.');
       }
 
       final width = parentGridItemData.width;

@@ -29,15 +29,11 @@ void main() {
       const ResponsiveDesignGridThemeData themeData = ResponsiveDesignGridThemeData();
       const ResponsiveDesignGridThemeData themeData2 = ResponsiveDesignGridThemeData();
 
-      const ResponsiveDesignGridThemeData themeData3 = ResponsiveDesignGridThemeData(
-        columns: 10,
-        columnSpacing: 10,
-        rowSpacing: 10,
-        gridPadding: 10,
-      );
-
       expect(themeData == themeData2, isTrue);
-      expect(themeData == themeData3, isFalse);
+      expect(themeData == const ResponsiveDesignGridThemeData(columns: 10), isFalse);
+      expect(themeData == const ResponsiveDesignGridThemeData(columnSpacing: 10), isFalse);
+      expect(themeData == const ResponsiveDesignGridThemeData(rowSpacing: 10), isFalse);
+      expect(themeData == const ResponsiveDesignGridThemeData(gridPadding: 10), isFalse);
     });
 
     test('should provide hashcode', () {
