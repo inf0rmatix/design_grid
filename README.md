@@ -16,6 +16,7 @@ and the Flutter guide for
 </a>
 
 TODO finalize Readme
+TODO update gifs
 
 Design Grid streamlines your workflow and saves time. Easily configure multiple devices and screen sizes while reducing boilerplate code. Its user-friendly design makes integration effortless, allowing you to focus on your project's core.
 
