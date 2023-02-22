@@ -17,7 +17,9 @@ and the Flutter guide for
 
 TODO finalize Readme
 
-The classic use-case of implementing a colum-based design. Use the classic ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints.
+Design Grid streamlines your workflow and saves time. Easily configure multiple devices and screen sizes while reducing boilerplate code. Its user-friendly design makes integration effortless, allowing you to focus on your project's core.
+
+The classic use-case of implementing a colum-based design. Use ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints.
 
 Need to implement a design based on the strict rules of Material Layout? Use the MaterialDesignGrid to get an exact implementation of the [Material Design Layout guide](https://m2.material.io/design/layout/responsive-layout-grid.html)
 

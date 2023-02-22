@@ -74,6 +74,7 @@ class ResponsiveDesignGridExample extends StatelessWidget {
             // Keep your rows as small as possible. To enforce a visual line break, prefer using a new Responsive Design Grid Row.
             // For some rare occasions, there is the ResponsiveDesignGridBreak widget which enforces a visual line break within a row.
             ResponsiveDesignGridRow(
+              alignment: DesignGridRowAlignment.center,
               children: [
                 // This is a responsive design grid item, which spans 12 columns on small screens, 10 columns on medium screens, 8 columns on large screens, and 6 columns on extra large screens.
                 ResponsiveDesignGridItem(
@@ -93,7 +94,7 @@ class ResponsiveDesignGridExample extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Text(
-                              'This example shows how to use the ResponsiveDesignGrid. This element spans 12 columns on small screens, 10 columns on medium screens, 8 columns on large screens, and 6 columns on extra large screens.'),
+                              'This example shows how to use the ResponsiveDesignGrid. This element spans 12 columns on small screens, 10 columns on medium screens, 8 columns on large screens, and 6 columns on extra large screens.\nThe floating action button toggles the debug overlay.'),
                         ),
                       ],
                     ),
@@ -102,97 +103,108 @@ class ResponsiveDesignGridExample extends StatelessWidget {
               ],
             ),
             ResponsiveDesignGridRow(
-              children: [
-                ResponsiveDesignGridItem(
-                  columns: const ResponsiveDesignGridColumns(
-                    small: 6,
-                    medium: 4,
-                    large: 3,
-                    extraLarge: 2,
-                  ),
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-                ResponsiveDesignGridItem(
-                  columns: const ResponsiveDesignGridColumns(
-                    small: 6,
-                    medium: 4,
-                    large: 3,
-                    extraLarge: 2,
-                  ),
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-                ResponsiveDesignGridItem(
-                  columns: const ResponsiveDesignGridColumns(
-                    small: 6,
-                    medium: 4,
-                    large: 3,
-                    extraLarge: 2,
-                  ),
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-                ResponsiveDesignGridItem(
-                  columns: const ResponsiveDesignGridColumns(
-                    small: 6,
-                    medium: 4,
-                    large: 3,
-                    extraLarge: 2,
-                  ),
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-              ],
-            ),
-            // Nesting the Responsive Design Grid is indefinitely possible.
-            ResponsiveDesignGridRow(
+              alignment: DesignGridRowAlignment.center,
               children: [
                 ResponsiveDesignGridItem(
                   columns: const ResponsiveDesignGridColumns(
                     small: 12,
                     medium: 10,
                     large: 8,
-                    extraLarge: 6,
                   ),
-                  child: ResponsiveDesignGridDebugOverlay(
-                    useOuterPadding: false,
-                    child: ResponsiveDesignGrid(
-                      children: [
-                        ResponsiveDesignGridRow(
-                          children: [
-                            ResponsiveDesignGridItem(
-                              columns: const ResponsiveDesignGridColumns(
-                                small: 6,
-                                medium: 4,
-                              ),
-                              child: Container(
-                                height: 50,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            ),
-                            ResponsiveDesignGridItem(
-                              columns: const ResponsiveDesignGridColumns(
-                                small: 6,
-                                medium: 4,
-                              ),
-                              child: Container(
-                                height: 50,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Name*',
+                      border: OutlineInputBorder(),
                     ),
+                  ),
+                ),
+              ],
+            ),
+            ResponsiveDesignGridRow(
+              alignment: DesignGridRowAlignment.center,
+              children: [
+                ResponsiveDesignGridItem(
+                  columns: const ResponsiveDesignGridColumns(
+                    small: 12,
+                    medium: 5,
+                    large: 4,
+                  ),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'E-Mail*',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                ResponsiveDesignGridItem(
+                  columns: const ResponsiveDesignGridColumns(
+                    small: 12,
+                    medium: 5,
+                    large: 4,
+                  ),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Phone (optional)',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            ResponsiveDesignGridRow(
+              alignment: DesignGridRowAlignment.center,
+              children: [
+                ResponsiveDesignGridItem(
+                  columns: const ResponsiveDesignGridColumns(
+                    small: 12,
+                    medium: 10,
+                    large: 8,
+                  ),
+                  child: TextFormField(
+                    minLines: 4,
+                    maxLines: 4,
+                    decoration: const InputDecoration(
+                      labelText: 'Message*',
+                      alignLabelWithHint: true,
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const ResponsiveDesignGridRow(
+              alignment: DesignGridRowAlignment.center,
+              children: [
+                ResponsiveDesignGridItem(
+                  columns: ResponsiveDesignGridColumns(
+                    small: 12,
+                    medium: 10,
+                    large: 8,
+                  ),
+                  child: Text(
+                      'Iste aut cupiditate adipisci et iste incidunt est animi. Voluptatem natus reiciendis magni nesciunt magni. Reiciendis ad beatae. Odit corrupti eos voluptatem molestiae voluptatem qui rerum animi officiis. Natus dolores provident excepturi nostrum omnis voluptatem.'),
+                ),
+              ],
+            ),
+            ResponsiveDesignGridRow(
+              alignment: DesignGridRowAlignment.end,
+              children: [
+                ResponsiveDesignGridItem(
+                  columns: const ResponsiveDesignGridColumns(
+                    small: 12,
+                    medium: 4,
+                    large: 3,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Submit'),
+                  ),
+                ),
+                ResponsiveDesignGridItem.placeholder(
+                  columns: const ResponsiveDesignGridColumns(
+                    small: 0,
+                    medium: 1,
+                    large: 2,
                   ),
                 ),
               ],
@@ -235,7 +247,7 @@ class MaterialDesignGridExample extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Text(
-                              'This is a Material Design Grid example. The Material Design Grid uses a varying number of columns depending on the screen size. Its children are given a fixed number of columns.'),
+                              'This is a Material Design Grid example. The Material Design Grid uses a varying number of columns depending on the screen size. Its children are given a fixed number of columns.\nThe floating action button toggles the debug overlay.'),
                         ),
                       ],
                     ),
@@ -246,45 +258,70 @@ class MaterialDesignGridExample extends StatelessWidget {
             MaterialDesignGridRow(
               children: [
                 MaterialDesignGridItem(
-                  columns: 2,
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
+                  columns: 4,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Name*',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            MaterialDesignGridRow(
+              children: [
+                MaterialDesignGridItem(
+                  columns: 4,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'E-Mail*',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ),
                 MaterialDesignGridItem(
-                  columns: 2,
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
+                  columns: 4,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Phone (optional)',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ),
+              ],
+            ),
+            MaterialDesignGridRow(
+              children: [
                 MaterialDesignGridItem(
-                  columns: 2,
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
+                  columns: 4,
+                  child: TextFormField(
+                    minLines: 4,
+                    maxLines: 4,
+                    decoration: const InputDecoration(
+                      labelText: 'Message*',
+                      alignLabelWithHint: true,
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ),
+              ],
+            ),
+            const MaterialDesignGridRow(
+              children: [
                 MaterialDesignGridItem(
-                  columns: 2,
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                  columns: 4,
+                  child: Text(
+                      'Iste aut cupiditate adipisci et iste incidunt est animi. Voluptatem natus reiciendis magni nesciunt magni. Reiciendis ad beatae. Odit corrupti eos voluptatem molestiae voluptatem qui rerum animi officiis. Natus dolores provident excepturi nostrum omnis voluptatem.'),
                 ),
+              ],
+            ),
+            MaterialDesignGridRow(
+              children: [
                 MaterialDesignGridItem(
-                  columns: 2,
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-                MaterialDesignGridItem(
-                  columns: 2,
-                  child: Container(
-                    height: 50,
-                    color: Theme.of(context).colorScheme.primary,
+                  columns: 4,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Submit'),
                   ),
                 ),
               ],
