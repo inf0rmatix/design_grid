@@ -15,14 +15,11 @@ and the Flutter guide for
  <img src="https://codecov.io/gh/inf0rmatix/design_grid/branch/master/graph/badge.svg?token=7OWGIYJD5Y"/> 
 </a>
 
-TODO finalize Readme
-TODO update gifs
-
 Design Grid streamlines your workflow and saves time. Easily configure multiple devices and screen sizes while reducing boilerplate code. Its user-friendly design makes integration effortless, allowing you to focus on your project's core.
 
 The classic use-case of implementing a colum-based design. Use ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints.
 
-Need to implement a design based on the strict rules of Material Layout? Use the MaterialDesignGrid to get an exact implementation of the [Material Design Layout guide](https://m2.material.io/design/layout/responsive-layout-grid.html)
+Need to implement a design based on the strict rules of Material Layout? Use the MaterialDesignGrid to get an exact implementation of the [Material Design Layout guide](https://m2.material.io/design/layout/responsive-layout-grid.html).
 
 ## 🔗 Table of Contents
 - [🔗 Table of Contents](#-table-of-contents)
@@ -80,6 +77,15 @@ Talk with your designer to build a common understanding.
 
 ### Responsive Design Grid
 
+`ResponsiveDesignGridConfig` is required only once in your app, it provides the `ResponsiveDesignGridTheme`.
+You can however always add an extra `ResponsiveDesignGridTheme` widget if you really need to. Beware, that this is not recommended.
+
+You can nest design grids indefinitely. To keep performance high, make sure to nest them directly in a `ResponsiveDesignGridItem`.
+If you get any errors, you might have to pass the parameter `shouldCalculateLayout: true` to the `ResponsiveDesignGrid` widget. 
+This might happen most likely if you nested the design grid within a child, but the design grid does not get the full width of the child.
+
+`ResponsiveDesignGridRow` widget will wrap its children, you should size your rows as small as possible. Avoid large Rows since this will impact performance.
+
 ```dart
 @override
 Widget build(BuildContext context){
@@ -107,6 +113,12 @@ Widget build(BuildContext context){
 
 ### Material Design Grid
 
+`MaterialDesignGridTheme` is required only once in your app, above the `MaterialDesignGrid` widget.
+
+`MaterialDesignGrid` is **not** meant to be used nested due to material specifications.
+
+`MaterialDesignGridRow` widget will wrap its children, you should size your rows as small as possible. Avoid large Rows since this will impact performance.
+
 ```dart
 @override
 Widget build(BuildContext context) {
@@ -128,6 +140,8 @@ Widget build(BuildContext context) {
 ```
 
 ## 📚 Additional information
+
+All classes and exposed properties are well documented. If you find the documentation to be lacking, please create an issue :)
 
 ### Implementing a custom design grid approach
 
