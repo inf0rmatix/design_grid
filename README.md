@@ -51,7 +51,7 @@ You can customize:
 - Grid-padding
 - Amount of columns
 
-![](readme/responsive_design_grid.gif)
+![](https://github.com/inf0rmatix/design_grid/blob/bafda9b5bdaee878da73c6407115d247872dc3a8/readme/responsive_design_grid.gif)
 
 ### Material Design Grid
 
@@ -66,7 +66,7 @@ You can customize:
 - Grid-padding
 - Amount of columns per breakpoint
 
-![](readme/material_design_grid.gif)
+![](https://github.com/inf0rmatix/design_grid/blob/bafda9b5bdaee878da73c6407115d247872dc3a8/readme/material_design_grid.gif)
 
 ## 🎉 Getting started
 
