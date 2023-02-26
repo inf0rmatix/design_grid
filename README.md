@@ -55,7 +55,7 @@ You can customize:
 
 ### Material Design Grid
 
-Implement a design based on the Material Design guidelines.
+Implement a design based on the [Material Design guidelines](https://m2.material.io/design/layout/responsive-layout-grid.html#columns-gutters-and-margins).
 Material Design Grid is not meant to be used nested.
 
 You can customize:
