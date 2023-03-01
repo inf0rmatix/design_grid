@@ -10,6 +10,7 @@ class MaterialDesignGridItem extends MaterialDesignGridItemWidget {
     super.key,
     required this.columns,
     required this.child,
+    // TODO disable this assertion and instead make the widget take the maximum possible columns
   }) : assert(columns > 0 && columns <= 4, 'columns must be between 1 and 4');
 
   factory MaterialDesignGridItem.placeholder({

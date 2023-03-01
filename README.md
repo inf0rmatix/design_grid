@@ -142,6 +142,7 @@ Widget build(BuildContext context) {
 ## 📚 Additional information
 
 All classes and exposed properties are well documented. If you find the documentation to be lacking, please create an issue :)
+// TODO add link to create issue, maybe give some guidance on issue formatting
 
 ### Implementing a custom design grid approach
 
