@@ -10,7 +10,9 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
-<a href="https://github.com/inf0rmatix]/design_grid/actions"><img src="https://github.com/inf0rmatix/design_grid/workflows/tests/badge.svg" alt="Build Status"></a> 
+<a href="https://github.com/inf0rmatix]/design_grid/actions">
+    <img src="https://github.com/inf0rmatix/design_grid/workflows/tests/badge.svg" alt="Build Status">
+</a> 
 <a href="https://codecov.io/gh/inf0rmatix/design_grid" > 
  <img src="https://codecov.io/gh/inf0rmatix/design_grid/branch/master/graph/badge.svg?token=7OWGIYJD5Y"/> 
 </a>
@@ -32,6 +34,9 @@ Need to implement a design based on the strict rules of Material Layout? Use the
 - [🎉 Getting started](#-getting-started)
 - [🏗️ Usage](#️-usage)
   - [Responsive Design Grid](#responsive-design-grid-1)
+    - [Basic Usage](#basic-usage)
+    - [Adjusting Breakpoints](#adjusting-breakpoints)
+    - [Customizing the grid](#customizing-the-grid)
   - [Material Design Grid](#material-design-grid-1)
 - [📚 Additional information](#-additional-information)
   - [Implementing a custom design grid approach](#implementing-a-custom-design-grid-approach)
@@ -74,7 +79,7 @@ You can customize:
 ## 🎉 Getting started
 
 Decide whether you need to use the `ResponsiveDesignGrid` or the `MaterialDesignGrid`.
-Talk with your designer to build a common understanding.
+Speak with your designer to build a common understanding.
 
 ## 🏗️ Usage
 
@@ -87,7 +92,9 @@ You can nest design grids indefinitely. To keep performance high, make sure to n
 If you get any errors, you might have to pass the parameter `shouldCalculateLayout: true` to the `ResponsiveDesignGrid` widget. 
 This might happen most likely if you nested the design grid within a child, but the design grid does not get the full width of the child.
 
-`ResponsiveDesignGridRow` widget will wrap its children, you should size your rows as small as possible. Avoid large Rows since this will impact performance.
+`ResponsiveDesignGridRow` widget will wrap its children, your rows should have as little children as possible. Avoid large Rows since this will impact performance.
+
+#### Basic Usage
 
 ```dart
 @override
@@ -113,6 +120,79 @@ Widget build(BuildContext context){
     );
 }
 ```
+
+#### Adjusting Breakpoints
+
+To change the default breakpoints values, you can use the `breakpoints` property in `ResponsiveDesignGridConfig` constructor which takes an instance of `ResponsiveDesignGridBreakpoints` class.
+
+
+```dart
+@override
+Widget build(BuildContext context){
+    return ResponsiveDesignGridConfig(
+            breakpoints: const ResponsiveDesignGridBreakpoints(
+            small: 375,
+            medium: 768,
+            large: 1280,
+            extraLarge: 1920,
+        ),
+        child: ResponsiveDesignGrid(
+            children: [
+                ResponsiveDesignGridRow(
+                    children: [
+                        ResponsiveDesignGridItem(
+                            columns: ResponsiveDesignGridColumns(
+                                small: 12,
+                                medium: 10,
+                                large: 8,
+                                extraLarge: 6,
+                            ),
+                            child: Placeholder(),
+                        ),
+                    ],
+                )
+            ],
+        ),
+    );
+}
+```
+
+
+#### Customizing the grid
+
+To change the amount of columns, the column spacing, the row spacing or the grid padding, you can use the `theme` property in `ResponsiveDesignGridConfig` constructor which takes an instance of `ResponsiveDesignGridThemeData` class.
+
+```dart
+@override
+Widget build(BuildContext context){
+    return ResponsiveDesignGridConfig(
+        theme: ResponsiveDesignGridThemeData(
+            columns: 12,
+            columnSpacing: 16.0,
+            rowSpacing: 16.0,
+            gridPadding:16.0,
+        ),
+        child: ResponsiveDesignGrid(
+            children: [
+                ResponsiveDesignGridRow(
+                    children: [
+                        ResponsiveDesignGridItem(
+                            columns: ResponsiveDesignGridColumns(
+                                small: 12,
+                                medium: 10,
+                                large: 8,
+                                extraLarge: 6,
+                            ),
+                            child: Placeholder(),
+                        ),
+                    ],
+                )
+            ],
+        ),
+    );
+}
+```
+
 
 ### Material Design Grid
 
@@ -144,8 +224,8 @@ Widget build(BuildContext context) {
 
 ## 📚 Additional information
 
-All classes and exposed properties are well documented. If you find the documentation to be lacking, please create an issue :)
-// TODO add link to create issue, maybe give some guidance on issue formatting
+All classes and exposed properties are well documented. If you find the documentation to be lacking, please [create an issue](https://github.com/inf0rmatix/design_grid/issues/new/choose) 😊
+
 
 ### Implementing a custom design grid approach
 

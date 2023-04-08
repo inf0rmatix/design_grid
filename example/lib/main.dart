@@ -66,6 +66,12 @@ class ResponsiveDesignGridExample extends StatelessWidget {
     // This widget should be placed as high up in the widget tree as possible.
     // You can also pass a custom theme to change row spacing, column spacing, the grid outer padding and even the number of columns for the grid.
     return ResponsiveDesignGridConfig(
+      breakpoints: const ResponsiveDesignGridBreakpoints(
+        small: 375,
+        medium: 768,
+        large: 1280,
+        extraLarge: 1920,
+      ),
       // The ResponsiveDesignGridDebugOverlay is a useful widget to visually debug your grid implementation.
       child: ResponsiveDesignGridDebugOverlay(
         child: ResponsiveDesignGrid(

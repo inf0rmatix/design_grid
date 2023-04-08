@@ -8,11 +8,15 @@ class ResponsiveDesignGridConfig extends StatelessWidget {
   /// Optional override for the [ResponsiveDesignGridDisplaySizeConfig] widget. Useful for testing.
   final ResponsiveDesignGridDisplaySize? displaySize;
 
+  /// Optional override for the breakpoints
+  final ResponsiveDesignGridBreakpoints breakpoints;
+
   final Widget child;
 
   const ResponsiveDesignGridConfig({
     super.key,
     this.theme = const ResponsiveDesignGridThemeData(),
+    this.breakpoints = const ResponsiveDesignGridBreakpoints(),
     this.displaySize,
     required this.child,
   });
@@ -21,6 +25,7 @@ class ResponsiveDesignGridConfig extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveDesignGridDisplaySizeConfig(
       displaySize: displaySize,
+      breakpoints: breakpoints,
       child: ResponsiveDesignGridTheme(
         data: theme,
         child: child,
