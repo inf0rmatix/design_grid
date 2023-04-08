@@ -33,6 +33,39 @@ void main() {
     );
 
     goldenTest(
+      'should clamp column span to the total number of columns',
+      fileName: 'responsive_design_grid_clamp_column_span',
+      constraints: BoxConstraints(maxWidth: breakpoints.small),
+      builder: () {
+        return ResponsiveDesignGridConfig(
+          theme: testDesignGridThemeData,
+          child: ResponsiveDesignGridConfig(
+            theme: const ResponsiveDesignGridThemeData(
+              columns: 12,
+            ),
+            child: ResponsiveDesignGrid(
+              children: [
+                ResponsiveDesignGridRow(
+                  children: [
+                    ResponsiveDesignGridItem(
+                      columns: const ResponsiveDesignGridColumns(small: 32),
+                      child: _GridChildLabel(),
+                    ),
+                    const ResponsiveDesignGridItemBreak(),
+                    ResponsiveDesignGridItem(
+                      columns: const ResponsiveDesignGridColumns(small: 6),
+                      child: _GridChildLabel(),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+
+    goldenTest(
       'should use row alignment properly',
       fileName: 'responsive_design_grid_row_alignment',
       constraints: const BoxConstraints(maxWidth: 1600),

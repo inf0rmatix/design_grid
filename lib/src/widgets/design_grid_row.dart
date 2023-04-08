@@ -43,7 +43,10 @@ abstract class DesignGridRow<T extends DesignGridItemWidget> extends StatelessWi
         continue;
       }
 
-      final childColumns = isChildBreak ? columns - columnCounter : getItemColumns(context, child);
+      var childColumns = isChildBreak ? columns - columnCounter : getItemColumns(context, child);
+
+      // make sure the child columns don't overflow the total columns
+      childColumns = childColumns.clamp(0, columns);
 
       // don't display children with "invisible" column-span
       if (childColumns <= 0) {
