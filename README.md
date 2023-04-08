@@ -15,6 +15,9 @@ and the Flutter guide for
  <img src="https://codecov.io/gh/inf0rmatix/design_grid/branch/master/graph/badge.svg?token=7OWGIYJD5Y"/> 
 </a>
 
+
+Implement designs just like in Figma. Arrange your widgets in a grid and make your designer happy.
+
 Design Grid streamlines your workflow and saves time. Easily configure multiple devices and screen sizes while reducing boilerplate code. Its user-friendly design makes integration effortless, allowing you to focus on your project's core.
 
 The classic use-case of implementing a colum-based design. Use ResponsiveDesignGrid to implement a bootstrap-like design system where every element has a different column-span based on breakpoints.
