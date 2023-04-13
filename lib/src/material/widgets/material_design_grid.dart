@@ -7,14 +7,14 @@ class MaterialDesignGrid extends StatelessWidget {
   /// This is good for performance, by default this is [false] and uses [LayoutBuilder] to estimate the available horizontal space.
   final bool hasFullWindowWidth;
 
-  final DesignGridAlignment alignment;
+  final DesignGridRowAlignment defaultRowAlignment;
 
   final List<MaterialDesignGridRow> children;
 
   const MaterialDesignGrid({
     super.key,
     this.hasFullWindowWidth = false,
-    this.alignment = DesignGridAlignment.start,
+    this.defaultRowAlignment = DesignGridRowAlignment.start,
     required this.children,
   });
 
@@ -23,7 +23,7 @@ class MaterialDesignGrid extends StatelessWidget {
     if (hasFullWindowWidth) {
       return _MaterialDesignGridLayout(
         width: MediaQuery.of(context).size.width,
-        alignment: alignment,
+        defaultRowAlignment: defaultRowAlignment,
         children: children,
       );
     }
@@ -33,7 +33,7 @@ class MaterialDesignGrid extends StatelessWidget {
       builder: (context, constraints) {
         return _MaterialDesignGridLayout(
           width: constraints.biggest.width,
-          alignment: alignment,
+          defaultRowAlignment: defaultRowAlignment,
           children: children,
         );
       },
@@ -44,13 +44,13 @@ class MaterialDesignGrid extends StatelessWidget {
 class _MaterialDesignGridLayout extends StatelessWidget {
   final double width;
 
-  final DesignGridAlignment alignment;
+  final DesignGridRowAlignment defaultRowAlignment;
 
   final List<MaterialDesignGridRow> children;
 
   const _MaterialDesignGridLayout({
     required this.width,
-    required this.alignment,
+    required this.defaultRowAlignment,
     required this.children,
   });
 
@@ -72,25 +72,27 @@ class _MaterialDesignGridLayout extends StatelessWidget {
 
     bodyWidth = bodyWidth ?? availableWidth;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: margin ?? 0),
-      child: DesignGridColumnSizes(
-        sizes: columnSizes,
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: SizedBox(
-            width: bodyWidth,
-            child: Column(
-              crossAxisAlignment: alignment.toCrossAxisAlignment(),
-              children: children
-                  .expand((child) => [
-                        child,
-                        if (children.last != child)
-                          SizedBox(
-                            height: theme.rowSpacing,
-                          ),
-                      ])
-                  .toList(),
+    return DesignGridDefaultRowAlignment(
+      alignment: defaultRowAlignment,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: margin ?? 0),
+        child: DesignGridColumnSizes(
+          sizes: columnSizes,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              width: bodyWidth,
+              child: Column(
+                children: children
+                    .expand((child) => [
+                          child,
+                          if (children.last != child)
+                            SizedBox(
+                              height: theme.rowSpacing,
+                            ),
+                        ])
+                    .toList(),
+              ),
             ),
           ),
         ),

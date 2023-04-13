@@ -3,13 +3,13 @@ import 'package:flutter/widgets.dart';
 
 abstract class DesignGridRow<T extends DesignGridItemWidget> extends StatelessWidget {
   /// The horizontal alignment of the items.
-  final DesignGridRowAlignment alignment;
+  final DesignGridRowAlignment? alignment;
 
   final List<T> children;
 
   const DesignGridRow({
     super.key,
-    this.alignment = DesignGridRowAlignment.start,
+    this.alignment,
     required this.children,
   });
 
@@ -75,10 +75,12 @@ abstract class DesignGridRow<T extends DesignGridItemWidget> extends StatelessWi
       sizedChildren.add(childWidget);
     }
 
+    final effectiveAlignment = alignment ?? DesignGridDefaultRowAlignment.of(context);
+
     return SizedBox(
       width: double.infinity,
       child: Wrap(
-        alignment: alignment.toWrapAlignment(),
+        alignment: effectiveAlignment.toWrapAlignment(),
         spacing: columnSpacing,
         runSpacing: rowSpacing,
         children: sizedChildren,

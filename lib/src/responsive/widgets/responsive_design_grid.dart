@@ -97,7 +97,7 @@ import 'package:flutter/widgets.dart';
 /// }
 /// ```
 class ResponsiveDesignGrid extends StatelessWidget {
-  final DesignGridAlignment alignment;
+  final DesignGridRowAlignment defaultRowAlignment;
 
   /// Whether to use the outer padding of the grid or not. Top level grid will be true by default, nested grids will be false by default.
   final bool? useOuterPadding;
@@ -110,9 +110,7 @@ class ResponsiveDesignGrid extends StatelessWidget {
 
   const ResponsiveDesignGrid({
     super.key,
-    // TODO does not work, not required any more
-    // TODO enable inherited row alignment
-    this.alignment = DesignGridAlignment.start,
+    this.defaultRowAlignment = DesignGridRowAlignment.start,
     this.useOuterPadding,
     this.shouldCalculateLayout,
     required this.children,
@@ -135,7 +133,7 @@ class ResponsiveDesignGrid extends StatelessWidget {
           final width = constraints.biggest.width;
 
           return ResponsiveDesignGridBuilder(
-            alignment: alignment,
+            defaultRowAlignment: defaultRowAlignment,
             useOuterPadding: useOuterPadding,
             width: width,
             children: children,
@@ -151,7 +149,7 @@ class ResponsiveDesignGrid extends StatelessWidget {
       final width = parentGridItemData.width;
 
       return ResponsiveDesignGridBuilder(
-        alignment: alignment,
+        defaultRowAlignment: defaultRowAlignment,
         useOuterPadding: useOuterPadding,
         width: width,
         children: children,
