@@ -1,3 +1,7 @@
+## 0.1.0
+
+ * updating README.md
+
 ## 0.0.4
 
  * fixing gif links in readme

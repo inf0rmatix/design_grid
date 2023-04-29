@@ -1,6 +1,6 @@
 name: design_grid
 description: Implement designs just like your designer intended. Use either the classic responsive design grid approach or go with the Material Design Layout.
-version: 0.0.4
+version: 0.1.0
 homepage: https://paul-koehler.dev/
 
 environment:
