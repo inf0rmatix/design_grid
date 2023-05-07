@@ -1,3 +1,7 @@
+## 0.1.1
+
+ * removing old property "breakpoints" from ResponsiveDesignGridThemeData
+  
 ## 0.1.0
 
  * updating README.md
