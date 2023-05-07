@@ -1,9 +1,4 @@
-import 'package:design_grid/design_grid.dart';
-
 class ResponsiveDesignGridThemeData {
-  /// If you want to override the default breakpoints, you can pass them in here.
-  final ResponsiveDesignGridBreakpoints? breakpoints;
-
   /// The number of columns in the grid.
   final int columns;
 
@@ -17,7 +12,6 @@ class ResponsiveDesignGridThemeData {
   final double gridPadding;
 
   const ResponsiveDesignGridThemeData({
-    this.breakpoints = const ResponsiveDesignGridBreakpoints(),
     this.columns = 12,
     this.columnSpacing = 16.0,
     this.rowSpacing = 16.0,
