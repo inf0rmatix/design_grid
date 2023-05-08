@@ -1,4 +1,5 @@
 import 'package:design_grid/design_grid.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -74,6 +75,8 @@ class ResponsiveDesignGridExample extends StatelessWidget {
       ),
       // The ResponsiveDesignGridDebugOverlay is a useful widget to visually debug your grid implementation.
       child: ResponsiveDesignGridDebugOverlay(
+        // To hide the button in release mode, set enableControls to false. Easiest way is to use kDebugMode.
+        enableControls: kDebugMode,
         child: ResponsiveDesignGrid(
           children: [
             // This is a responsive design grid row. Contrary to Flutter's Row widget, this is more a logical separation and will wrap its children if necessary.
