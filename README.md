@@ -10,7 +10,7 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
-<a href="https://github.com/inf0rmatix]/design_grid/actions">
+<a href="https://github.com/inf0rmatix/design_grid/actions">
     <img src="https://github.com/inf0rmatix/design_grid/workflows/tests/badge.svg" alt="Build Status">
 </a> 
 <a href="https://codecov.io/gh/inf0rmatix/design_grid" > 
@@ -90,7 +90,7 @@ You can however always add an extra `ResponsiveDesignGridTheme` widget if you re
 
 You can nest design grids indefinitely. To keep performance high, make sure to nest them directly in a `ResponsiveDesignGridItem`.
 If you get any errors, you might have to pass the parameter `shouldCalculateLayout: true` to the `ResponsiveDesignGrid` widget. 
-This might happen most likely if you nested the design grid within a child, but the design grid does not get the full width of the child.
+This might happen most likely when the design grid does not get the full width of the app, or if you nested it inside another `ResponsiveDesignGridItem` and it doesn't get the full width there.
 
 `ResponsiveDesignGridRow` widget will wrap its children, your rows should have as little children as possible. Avoid large Rows since this will impact performance.
 
