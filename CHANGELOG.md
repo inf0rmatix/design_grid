@@ -1,3 +1,7 @@
+## 1.0.1
+
+ * adding repository url to pubspec.yaml
+
 ## 1.0.0
 
  * fixing README.md
