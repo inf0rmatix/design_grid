@@ -1,8 +1,14 @@
 name: design_grid
 description: Implement designs just like your designer intended. Use either the classic responsive design grid approach or go with the Material Design Layout.
-version: 1.0.1
+version: 1.0.2
 homepage: https://paul-koehler.dev/
 repository: https://github.com/inf0rmatix/design_grid
+issue_tracker: https://github.com/inf0rmatix/design_grid/issues
+screenshots:
+  - description: "Example of the responsive design grid in portrait mode"
+    path: "example/screenshots/screenshot-iphone-portrait.png"
+  - description: "Example of the responsive design grid in landscape mode"
+    path: "example/screenshots/screenshot-iphone-landscape.png"
 
 environment:
   sdk: ">=2.19.2 <3.0.0"

@@ -1,3 +1,7 @@
+## 1.0.2
+
+ * adding screenshots
+
 ## 1.0.1
 
  * adding repository url to pubspec.yaml
