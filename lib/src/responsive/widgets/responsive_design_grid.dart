@@ -124,6 +124,24 @@ class ResponsiveDesignGrid extends StatelessWidget {
     required this.children,
   });
 
+  const ResponsiveDesignGrid.column({
+    super.key,
+    this.defaultRowAlignment = DesignGridRowAlignment.start,
+    this.useOuterPadding,
+    this.shouldCalculateLayout,
+    required this.children,
+  })  : layoutType = DesignGridLayoutType.column,
+        shrinkWrap = false;
+
+  const ResponsiveDesignGrid.listView({
+    super.key,
+    this.defaultRowAlignment = DesignGridRowAlignment.start,
+    this.useOuterPadding,
+    this.shouldCalculateLayout,
+    this.shrinkWrap = false,
+    required this.children,
+  }) : layoutType = DesignGridLayoutType.listView;
+
   @override
   Widget build(BuildContext context) {
     final parentGridItemData = ResponsiveDesignGridItemData.maybeOf(context);
