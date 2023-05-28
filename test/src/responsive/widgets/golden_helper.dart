@@ -11,23 +11,19 @@ final breakpointScenarios = <ResponsiveDesignGridDisplaySize, double>{
   ResponsiveDesignGridDisplaySize.extraLarge: breakpoints.extraLarge,
 };
 
-List<GoldenTestScenario> responsiveBreakpointScenarios({
-  double? maxHeight,
-  required Widget child,
-}) {
+List<GoldenTestScenario> responsiveBreakpointScenarios({required Widget child}) {
   return [
     for (final entry in breakpointScenarios.entries)
       GoldenTestScenario(
         name: entry.key.toString(),
         constraints: BoxConstraints(
           maxWidth: entry.value,
-          maxHeight: maxHeight ?? double.infinity,
         ),
         child: MediaQuery(
           data: MediaQueryData(
             size: Size(
               entry.value,
-              maxHeight ?? double.maxFinite,
+              double.maxFinite,
             ),
           ),
           child: ConstrainedBox(
