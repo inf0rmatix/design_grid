@@ -12,7 +12,7 @@ import 'package:design_grid/design_grid.dart';
 /// ```
 /// The number of columns will be 4 on small and since medium isn't set, it will be taken from small.
 /// On large the number of columns will be 2 and on extra large too,
-/// since the closest next-smaller breakpoint large is defined with 4 columns
+/// since the closest next-smaller breakpoint large is defined with 2 columns
 class ResponsiveDesignGridColumns {
   final int small;
   final int? medium;
