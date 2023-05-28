@@ -1,8 +1,7 @@
 import 'package:design_grid/design_grid.dart';
+import 'package:design_grid/src/enums/design_grid_layout_type.dart';
 import 'package:design_grid/src/responsive/widgets/responsive_design_grid_builder.dart';
 import 'package:flutter/widgets.dart';
-
-// TODO add listview.builder design grid variant
 
 /// To implement a design system with a column-grid, you can use this widget.
 ///
@@ -106,6 +105,13 @@ class ResponsiveDesignGrid extends StatelessWidget {
   /// This is useful, if you use the [ResponsiveDesignGrid] inside a child but the [ResponsiveDesignGrid] itself doesn't get the full width, i.e. inside a card or a setup with other widgets.
   final bool? shouldCalculateLayout;
 
+  final DesignGridLayoutType layoutType;
+
+  /// Whether to shrink wrap the grid or not. If true, the grid will be as small as possible.
+  /// This is bad for performance, so use it only if necessary.
+  /// Also only works with [DesignGridLayoutType.listView]
+  final bool shrinkWrap;
+
   final List<ResponsiveDesignGridRow> children;
 
   const ResponsiveDesignGrid({
@@ -113,8 +119,28 @@ class ResponsiveDesignGrid extends StatelessWidget {
     this.defaultRowAlignment = DesignGridRowAlignment.start,
     this.useOuterPadding,
     this.shouldCalculateLayout,
+    this.shrinkWrap = false,
+    this.layoutType = DesignGridLayoutType.column,
     required this.children,
   });
+
+  const ResponsiveDesignGrid.column({
+    super.key,
+    this.defaultRowAlignment = DesignGridRowAlignment.start,
+    this.useOuterPadding,
+    this.shouldCalculateLayout,
+    required this.children,
+  })  : layoutType = DesignGridLayoutType.column,
+        shrinkWrap = false;
+
+  const ResponsiveDesignGrid.listView({
+    super.key,
+    this.defaultRowAlignment = DesignGridRowAlignment.start,
+    this.useOuterPadding,
+    this.shouldCalculateLayout,
+    this.shrinkWrap = false,
+    required this.children,
+  }) : layoutType = DesignGridLayoutType.listView;
 
   @override
   Widget build(BuildContext context) {
@@ -136,6 +162,8 @@ class ResponsiveDesignGrid extends StatelessWidget {
             defaultRowAlignment: defaultRowAlignment,
             useOuterPadding: useOuterPadding,
             width: width,
+            layoutType: layoutType,
+            shrinkWrap: shrinkWrap,
             children: children,
           );
         },
@@ -152,6 +180,8 @@ class ResponsiveDesignGrid extends StatelessWidget {
         defaultRowAlignment: defaultRowAlignment,
         useOuterPadding: useOuterPadding,
         width: width,
+        layoutType: layoutType,
+        shrinkWrap: shrinkWrap,
         children: children,
       );
     }

@@ -1,3 +1,8 @@
+## 1.1.0
+
+ * Implementing `DesignGridLayoutType` to enable switching between column and list view
+ * Correcting minor documentation flaws
+
 ## 1.0.2
 
  * adding screenshots

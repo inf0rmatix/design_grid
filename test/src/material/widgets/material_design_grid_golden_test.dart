@@ -1,5 +1,6 @@
 import 'package:alchemist/alchemist.dart';
 import 'package:design_grid/design_grid.dart';
+import 'package:design_grid/src/enums/design_grid_layout_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -37,6 +38,52 @@ void main() {
                 name: 'large (desktop)',
                 constraints: const BoxConstraints(maxWidth: 1600),
                 child: const _MaterialDesignGridForGeneralTest(),
+              ),
+            ],
+          ),
+        ),
+      );
+
+      goldenTest(
+        'should work with listView constructor',
+        fileName: 'material_design_grid_breakpoints_list_view',
+        builder: () => MaterialDesignGridTheme(
+          child: Column(
+            children: [
+              GoldenTestScenario(
+                name: 'extra small (phone)',
+                constraints: const BoxConstraints(maxWidth: 599),
+                child: const _MaterialDesignGridForGeneralTest(
+                  layoutType: DesignGridLayoutType.listView,
+                ),
+              ),
+              GoldenTestScenario(
+                name: 'small (tablet)',
+                constraints: const BoxConstraints(maxWidth: 904),
+                child: const _MaterialDesignGridForGeneralTest(
+                  layoutType: DesignGridLayoutType.listView,
+                ),
+              ),
+              GoldenTestScenario(
+                name: 'small (tablet)',
+                constraints: const BoxConstraints(maxWidth: 1239),
+                child: const _MaterialDesignGridForGeneralTest(
+                  layoutType: DesignGridLayoutType.listView,
+                ),
+              ),
+              GoldenTestScenario(
+                name: 'medium (laptop)',
+                constraints: const BoxConstraints(maxWidth: 1439),
+                child: const _MaterialDesignGridForGeneralTest(
+                  layoutType: DesignGridLayoutType.listView,
+                ),
+              ),
+              GoldenTestScenario(
+                name: 'large (desktop)',
+                constraints: const BoxConstraints(maxWidth: 1600),
+                child: const _MaterialDesignGridForGeneralTest(
+                  layoutType: DesignGridLayoutType.listView,
+                ),
               ),
             ],
           ),
@@ -247,15 +294,22 @@ class _MaterialDesignGridForHalfEmptyRowTest extends StatelessWidget {
 }
 
 class _MaterialDesignGridForGeneralTest extends StatelessWidget {
+  final DesignGridLayoutType layoutType;
+
   final bool hasFullWindowWidth;
 
-  const _MaterialDesignGridForGeneralTest({this.hasFullWindowWidth = false});
+  const _MaterialDesignGridForGeneralTest({
+    this.layoutType = DesignGridLayoutType.column,
+    this.hasFullWindowWidth = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(border: Border.all()),
       child: MaterialDesignGrid(
+        layoutType: layoutType,
+        shrinkWrap: true,
         hasFullWindowWidth: hasFullWindowWidth,
         children: const [
           MaterialDesignGridRow(

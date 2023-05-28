@@ -1,6 +1,6 @@
 name: design_grid
 description: Implement designs just like your designer intended. Use either the classic responsive design grid approach or go with the Material Design Layout.
-version: 1.0.2
+version: 1.1.0
 homepage: https://paul-koehler.dev/
 repository: https://github.com/inf0rmatix/design_grid
 issue_tracker: https://github.com/inf0rmatix/design_grid/issues
