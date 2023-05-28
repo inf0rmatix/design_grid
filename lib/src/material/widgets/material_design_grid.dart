@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:design_grid/design_grid.dart';
+import 'package:design_grid/src/enums/design_grid_layout_type.dart';
 import 'package:flutter/widgets.dart';
 
 class MaterialDesignGrid extends StatelessWidget {
@@ -9,12 +10,21 @@ class MaterialDesignGrid extends StatelessWidget {
 
   final DesignGridRowAlignment defaultRowAlignment;
 
+  final DesignGridLayoutType layoutType;
+
+  /// Whether to shrink wrap the grid or not. If true, the grid will be as small as possible.
+  /// This is bad for performance, so use it only if necessary.
+  /// Also only works with [DesignGridLayoutType.listView]
+  final bool shrinkWrap;
+
   final List<MaterialDesignGridRow> children;
 
   const MaterialDesignGrid({
     super.key,
     this.hasFullWindowWidth = false,
     this.defaultRowAlignment = DesignGridRowAlignment.start,
+    this.layoutType = DesignGridLayoutType.column,
+    this.shrinkWrap = false,
     required this.children,
   });
 
@@ -24,6 +34,8 @@ class MaterialDesignGrid extends StatelessWidget {
       return _MaterialDesignGridLayout(
         width: MediaQuery.of(context).size.width,
         defaultRowAlignment: defaultRowAlignment,
+        layoutType: layoutType,
+        shrinkWrap: shrinkWrap,
         children: children,
       );
     }
@@ -34,6 +46,8 @@ class MaterialDesignGrid extends StatelessWidget {
         return _MaterialDesignGridLayout(
           width: constraints.biggest.width,
           defaultRowAlignment: defaultRowAlignment,
+          layoutType: layoutType,
+          shrinkWrap: shrinkWrap,
           children: children,
         );
       },
@@ -46,11 +60,17 @@ class _MaterialDesignGridLayout extends StatelessWidget {
 
   final DesignGridRowAlignment defaultRowAlignment;
 
+  final DesignGridLayoutType layoutType;
+
+  final bool shrinkWrap;
+
   final List<MaterialDesignGridRow> children;
 
   const _MaterialDesignGridLayout({
     required this.width,
     required this.defaultRowAlignment,
+    required this.layoutType,
+    required this.shrinkWrap,
     required this.children,
   });
 
@@ -72,6 +92,34 @@ class _MaterialDesignGridLayout extends StatelessWidget {
 
     bodyWidth = bodyWidth ?? availableWidth;
 
+    final effectiveChildren = children
+        .expand((child) => [
+              child,
+              if (children.last != child)
+                SizedBox(
+                  height: theme.rowSpacing,
+                ),
+            ])
+        .toList();
+
+    Widget layout;
+
+    switch (layoutType) {
+      case DesignGridLayoutType.column:
+        layout = Column(
+          children: effectiveChildren,
+        );
+
+        break;
+      case DesignGridLayoutType.listView:
+        layout = ListView(
+          shrinkWrap: shrinkWrap,
+          children: effectiveChildren,
+        );
+
+        break;
+    }
+
     return DesignGridDefaultRowAlignment(
       alignment: defaultRowAlignment,
       child: Padding(
@@ -82,17 +130,7 @@ class _MaterialDesignGridLayout extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: SizedBox(
               width: bodyWidth,
-              child: Column(
-                children: children
-                    .expand((child) => [
-                          child,
-                          if (children.last != child)
-                            SizedBox(
-                              height: theme.rowSpacing,
-                            ),
-                        ])
-                    .toList(),
-              ),
+              child: layout,
             ),
           ),
         ),

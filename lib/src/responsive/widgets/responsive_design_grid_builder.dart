@@ -1,4 +1,5 @@
 import 'package:design_grid/design_grid.dart';
+import 'package:design_grid/src/enums/design_grid_layout_type.dart';
 import 'package:flutter/widgets.dart';
 
 class ResponsiveDesignGridBuilder extends StatelessWidget {
@@ -8,6 +9,10 @@ class ResponsiveDesignGridBuilder extends StatelessWidget {
 
   final double width;
 
+  final DesignGridLayoutType layoutType;
+
+  final bool shrinkWrap;
+
   final List<ResponsiveDesignGridRow> children;
 
   const ResponsiveDesignGridBuilder({
@@ -15,6 +20,8 @@ class ResponsiveDesignGridBuilder extends StatelessWidget {
     required this.defaultRowAlignment,
     required this.useOuterPadding,
     required this.width,
+    required this.layoutType,
+    required this.shrinkWrap,
     required this.children,
   });
 
@@ -26,6 +33,34 @@ class ResponsiveDesignGridBuilder extends StatelessWidget {
 
     final columnSizes = DesignGridCalculator.calculateColumnSizes(availableWidth, theme.columns, theme.columnSpacing);
 
+    final effectiveChildren = children
+        .expand((child) => [
+              child,
+              if (children.last != child)
+                SizedBox(
+                  height: theme.rowSpacing,
+                ),
+            ])
+        .toList();
+
+    Widget layout;
+
+    switch (layoutType) {
+      case DesignGridLayoutType.column:
+        layout = Column(
+          children: effectiveChildren,
+        );
+
+        break;
+      case DesignGridLayoutType.listView:
+        layout = ListView(
+          shrinkWrap: shrinkWrap,
+          children: effectiveChildren,
+        );
+
+        break;
+    }
+
     return DesignGridDefaultRowAlignment(
       alignment: defaultRowAlignment,
       child: Padding(
@@ -34,17 +69,7 @@ class ResponsiveDesignGridBuilder extends StatelessWidget {
           sizes: columnSizes,
           child: SizedBox(
             width: availableWidth,
-            child: Column(
-              children: children
-                  .expand((child) => [
-                        child,
-                        if (children.last != child)
-                          SizedBox(
-                            height: theme.rowSpacing,
-                          ),
-                      ])
-                  .toList(),
-            ),
+            child: layout,
           ),
         ),
       ),

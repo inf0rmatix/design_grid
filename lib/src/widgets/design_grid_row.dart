@@ -1,5 +1,5 @@
 import 'package:design_grid/design_grid.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 abstract class DesignGridRow<T extends DesignGridItemWidget> extends StatelessWidget {
   /// The horizontal alignment of the items.
